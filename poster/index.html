@@ -1,0 +1,139 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Video Classifieds and Auction App</title>
+<link rel="stylesheet" href="poster.css">
+<style>
+  .poster { --accent: #FBBF24; --accent2: #6366F1; }
+  .screen { background: #000; --tab-bg: #0B0D1A; --tab-muted: #7C819C; }
+  .vid { position: relative; flex: 1; border-radius: 0 0 26px 26px; overflow: hidden;
+    background: radial-gradient(110% 70% at 50% 35%, #4F5BD5 0%, #2A2F7A 45%, #10123A 80%); }
+  .vid svg.carart { position: absolute; left: 50%; top: 210px; transform: translateX(-50%); width: 300px; height: 170px; }
+  .tabs { position: absolute; top: 60px; left: 0; right: 0; display: flex; justify-content: center; gap: 22px; font: 600 15px Inter; color: rgba(255,255,255,.6); }
+  .tabs .on { color: #fff; border-bottom: 2px solid #fff; padding-bottom: 5px; }
+  .side { position: absolute; right: 14px; top: 250px; display: flex; flex-direction: column; gap: 18px; align-items: center; font: 600 12px Inter; }
+  .side div { display: flex; flex-direction: column; align-items: center; gap: 4px; }
+  .side svg.ic { width: 28px; height: 28px; }
+  .side .lk svg.ic { fill: #F43F5E; stroke: #F43F5E; }
+  .shade { position: absolute; inset: auto 0 0 0; height: 290px; background: linear-gradient(transparent, rgba(5,6,20,.95)); }
+  .info { position: absolute; left: 18px; right: 70px; bottom: 120px; }
+  .info .cat { display: inline-block; font: 600 12px Inter; padding: 5px 10px; border-radius: 999px; background: rgba(255,255,255,.14); }
+  .info .t { font: 700 22px 'Space Grotesk'; margin-top: 8px; }
+  .info .m { font: 500 13px Inter; color: #C7CBE6; margin-top: 4px; display: flex; align-items: center; gap: 5px; }
+  .info .m svg.ic { width: 14px; height: 14px; }
+  .bid { position: absolute; left: 14px; right: 14px; bottom: 16px; display: flex; align-items: center; gap: 10px; padding: 12px 12px 12px 14px; border-radius: 16px; background: rgba(255,255,255,.1); border: 1px solid rgba(255,255,255,.14); }
+  .bid .l span { display: block; font: 500 11px Inter; color: #C7CBE6; }
+  .bid .l b { font: 700 18px 'Space Grotesk'; color: var(--accent); }
+  .bid .tl { font: 600 12px 'JetBrains Mono'; color: #fff; display: flex; align-items: center; gap: 5px; margin-left: auto; }
+  .bid .tl svg.ic { width: 14px; height: 14px; }
+  .bid .pb { font: 700 13px Inter; padding: 10px 12px; border-radius: 11px; background: var(--accent); color: #1A1300; }
+  .tabbar .plus { width: 44px; height: 32px; min-width: 0; border-radius: 10px; background: var(--accent); color: #1A1300; display: grid; place-items: center; margin-top: 2px; }
+  .tabbar > div.on { color: #fff; }
+  /* floats */
+  .dlg { left: -20px; top: 60px; width: 250px; }
+  .dlg .row { display: flex; justify-content: space-between; font: 500 13px Inter; color: var(--muted); margin-top: 10px; }
+  .dlg .row b { color: #fff; font-weight: 600; }
+  .dlg .in { margin-top: 12px; padding: 12px 14px; border-radius: 12px; border: 1.5px solid var(--accent); font: 700 20px 'Space Grotesk'; display: flex; justify-content: space-between; }
+  .dlg .in span { font: 600 14px Inter; color: var(--muted); align-self: center; }
+  .dlg .btn { margin-top: 12px; text-align: center; font: 700 15px Inter; padding: 11px; border-radius: 12px; background: var(--accent); color: #1A1300; }
+  .post { left: -20px; top: 620px; width: 250px; }
+  .post .gr { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; margin-top: 12px; }
+  .post .gr div { display: flex; align-items: center; gap: 8px; padding: 10px; border-radius: 12px; background: rgba(255,255,255,.05); border: 1px solid var(--line); font: 600 13px Inter; }
+  .post .gr svg.ic { width: 18px; height: 18px; color: var(--accent); }
+  .post .dr { margin-top: 12px; display: flex; align-items: center; gap: 7px; font: 500 13px Inter; color: #6EE7B7; }
+  .post .dr svg.ic { width: 16px; height: 16px; }
+</style>
+</head>
+<body>
+<div class="poster">
+  <div class="grid"></div>
+
+  <div class="left">
+    <div class="eyebrow">Marketplace · Flutter</div>
+    <h1>Video Classifieds<br>&amp; <em>Auction</em> App</h1>
+    <p class="sub">Buyers and sellers post ads for cars, property, phones and furniture, browse them in a short-video feed and bid against the clock.</p>
+    <ul class="feats">
+      <li>TikTok-style video and photo ad feed with likes, follows and threaded comments</li>
+      <li>Guided ad posting for motors, property, devices and furniture, with drafts saved offline</li>
+      <li>Timed bidding with the highest bid and a countdown, and a map location picker</li>
+    </ul>
+    <div class="chips">
+      <span class="chip hl">Flutter</span>
+      <span class="chip hl">Provider + MVVM</span>
+      <span class="chip">Floor (SQLite)</span>
+      <span class="chip">Video player</span>
+      <span class="chip">Geolocator</span>
+      <span class="chip">Map picker</span>
+      <span class="chip">dio</span>
+    </div>
+  </div>
+
+  <div class="right">
+    <div class="stage">
+      <div class="phone-at">
+        <div class="phone glow">
+          <div class="screen">
+            <div class="vid">
+              <div class="island"></div>
+              <div class="statusbar" style="position:relative"><span>9:41</span><span class="sb-icons"><i></i><b></b></span></div>
+              <div class="tabs"><span class="on">Explore</span><span>Following</span></div>
+              <svg class="carart" viewBox="0 0 60 30" fill="rgba(255,255,255,.08)" stroke="rgba(255,255,255,.75)" stroke-width=".8" stroke-linejoin="round" stroke-linecap="round">
+                <path d="M3 22v-5c0-1.5 1-2.5 2.5-2.8L15 12l7-6c1-.8 2-1 3.5-1H38c1.5 0 2.6.5 3.6 1.4L48 12l7 1.5c1.5.3 2.5 1.5 2.5 3V22H3z"/>
+                <path d="M21 12h28M24 6l-3 6M36 5v7" fill="none"/>
+                <circle cx="15" cy="22" r="4.5" fill="#10123A"/><circle cx="46" cy="22" r="4.5" fill="#10123A"/>
+                <circle cx="15" cy="22" r="1.6" fill="none"/><circle cx="46" cy="22" r="1.6" fill="none"/>
+              </svg>
+              <div class="side">
+                <div class="lk"><svg class="ic"><use href="#i-heart"/></svg>1.2k</div>
+                <div><svg class="ic"><use href="#i-chat"/></svg>86</div>
+                <div><svg class="ic"><use href="#i-bookmark"/></svg>Save</div>
+                <div><svg class="ic"><use href="#i-share"/></svg>Share</div>
+              </div>
+              <div class="shade"></div>
+              <div class="info">
+                <span class="cat">Motors · Cars</span>
+                <div class="t">Sedan 2019 · 45,000 km</div>
+                <div class="m"><svg class="ic"><use href="#i-pin"/></svg>Dubai · Posted 2h ago</div>
+              </div>
+              <div class="bid">
+                <div class="l"><span>Highest bid</span><b>AED 62,500</b></div>
+                <div class="tl"><svg class="ic"><use href="#i-clock"/></svg>02:14:36</div>
+                <span class="pb">Bid</span>
+              </div>
+            </div>
+            <div class="tabbar">
+              <div class="on"><svg class="ic"><use href="#i-home"/></svg>Home</div>
+              <div><svg class="ic"><use href="#i-grid"/></svg>Category</div>
+              <div class="plus"><svg class="ic"><use href="#i-plus"/></svg></div>
+              <div><svg class="ic"><use href="#i-chat"/></svg>Chat</div>
+              <div><svg class="ic"><use href="#i-user"/></svg>Profile</div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="float dlg glow">
+        <div class="k">Place your bid</div>
+        <div class="row"><span>Highest bid</span><b>AED 62,500</b></div>
+        <div class="row"><span>Time left</span><b>02:14:36</b></div>
+        <div class="in">63,000<span>AED</span></div>
+        <div class="btn">Place Bid</div>
+      </div>
+
+      <div class="float post glow">
+        <div class="k">Post an ad</div>
+        <div class="gr">
+          <div><svg class="ic"><use href="#i-car"/></svg>Motors</div>
+          <div><svg class="ic"><use href="#i-building"/></svg>Property</div>
+          <div><svg class="ic"><use href="#i-smartphone"/></svg>Devices</div>
+          <div><svg class="ic"><use href="#i-sofa"/></svg>Furniture</div>
+        </div>
+        <div class="dr"><svg class="ic"><use href="#i-check"/></svg>Draft saved offline</div>
+      </div>
+    </div>
+  </div>
+</div>
+<script src="icons.js"></script>
+</body>
+</html>
